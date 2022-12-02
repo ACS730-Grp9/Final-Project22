@@ -1,7 +1,7 @@
 output "default_tags" {
   value = {
-    "Group"      = "9"
-    "Student ID" = "153040209"
+    "Owner"      = "Group 9"
+    "AppName"    = "Static Photo Reel"
     "Project"    = "ACS730 Final Project"
   }
 }

@@ -10,9 +10,6 @@
 # Ignored Terraform files - includes 'gitignore' in the name.
 *gitignore*.tf
 
-# Ignore all files that have 'private' prefix
+# Ignore all files and folders that have 'private' prefix
 **private*
-
-# Ignore all files in following directories
-**/keys
-**/private
+**keys*

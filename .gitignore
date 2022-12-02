@@ -4,25 +4,15 @@
 *.tfstate.lock.info
 *.terraform.lock.hcl
 
-# logs
-*.log
-
 # Directories
 .terraform/
 
-# SSH Keys
-*.pem
-
-# Backup files
-*.bak
-
-# Ignored Terraform files
+# Ignored Terraform files - includes 'gitignore' in the name.
 *gitignore*.tf
 
-# Ignore Mac .DS_Store files
-.DS_Store
+# Ignore all files that have 'private' prefix
+**private*
 
-# Ignored vscode files
-.vscode
-
-/private*
+# Ignore all files in following directories
+**/keys
+**/private

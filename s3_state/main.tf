@@ -7,8 +7,8 @@ module "globalvars" {
 }
 
 resource "aws_s3_bucket" "project_buckets" {
-  for_each = toset(var.bucket_name)
-  bucket   = each.key
+  for_each      = toset(var.bucket_name)
+  bucket        = each.key
   force_destroy = true
 
   tags = module.globalvars.default_tags

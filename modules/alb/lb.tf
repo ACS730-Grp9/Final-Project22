@@ -1,14 +1,14 @@
 locals {
-  comon_name = "${var.group_name}-${var.env}"
+  comon_name = "${var.prefix}-${var.env}"
 }
 
 
 resource "aws_lb" "application_load_balancer" {
   name               = "${local.comon_name}-LB"
-  security_groups    = [var.security_groups]
-  subnets            = [var.public_subnet,var.private_subnet]
+  security_groups    = [aws_security_group.scg_lb.id]
+  subnets            = var.public_subnet
   load_balancer_type = "application"
-  ip_address_type = "ipv4"
+  ip_address_type    = "ipv4"
   internal           = false
   tags = {
     Name = "${local.comon_name}-LB"

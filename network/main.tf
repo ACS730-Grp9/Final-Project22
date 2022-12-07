@@ -8,3 +8,32 @@ module "vpc-dev" {
   prefix              = var.prefix
   default_tags        = var.default_tags
 }
+
+
+# Module to deploy application loadbalancer
+module "alb" {
+  source         = "../modules/alb"
+  env            = var.env
+  prefix         = var.prefix
+  vpc_id         = module.vpc-dev.vpc_id
+  public_subnet  = module.vpc-dev.public_subnet_ids
+  private_subnet = module.vpc-dev.private_subnet_ids
+}
+
+
+# Module to deploy Auto scaling group
+module "asg" {
+  source           = "../modules/asg"
+  env              = var.env
+  prefix           = var.prefix
+  target_group_arn = module.alb.target_group
+  vpc_id           = module.vpc-dev.vpc_id
+  public_subnet    = module.vpc-dev.public_subnet_ids
+  private_subnet   = module.vpc-dev.private_subnet_ids
+  security_groups  = [module.alb.security_groups]
+  min_size         = var.min_size
+  max_size         = var.max_size
+  instance_type    = var.instance_type
+  key_name         = var.key_name
+  desired_capacity = var.desired_capacity
+}

@@ -93,7 +93,7 @@ resource "aws_nat_gateway" "nat-gw" {
 
 # Create elastic IP for NAT GW
 resource "aws_eip" "nat-eip" {
-  vpc   = true
+  vpc = true
   tags = {
     Name = "${var.prefix}-${var.env}-natgw"
   }
@@ -118,7 +118,7 @@ resource "aws_route" "private_route" {
 
 # Associate subnets with the custom route table
 resource "aws_route_table_association" "private_route_table_association" {
-count          = length(aws_subnet.private_subnet[*].id)
+  count          = length(aws_subnet.private_subnet[*].id)
   route_table_id = aws_route_table.private_route_table.id
   subnet_id      = aws_subnet.private_subnet[count.index].id
 }

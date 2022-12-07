@@ -13,3 +13,7 @@ output "internet_gateway_ids" {
 output "vpc_id" {
   value = module.vpc-dev.vpc_id
 }
+
+output "load_balancer_dns" {
+  value = module.alb.load_balancer_access
+}

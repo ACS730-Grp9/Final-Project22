@@ -4,8 +4,11 @@ resource "aws_launch_configuration" "server_launch_config" {
   instance_type               = var.instance_type
   key_name                    = var.key_name
   security_groups             = var.security_groups
-  associate_public_ip_address = true
-  user_data                   = filebase64("${path.module}/startup.sh")
+  associate_public_ip_address = false
+  user_data = templatefile("${path.module}/startup.sh.tpl", {
+    env    = var.env,
+    prefix = var.prefix
+  })
 
   root_block_device {
     volume_type = "gp2"

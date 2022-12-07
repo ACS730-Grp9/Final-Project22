@@ -2,7 +2,7 @@ variable "env" {
   type = string
 }
 
-variable "group_name" {
+variable "prefix" {
   type = string
 }
 
@@ -12,10 +12,9 @@ variable "vpc_id" {
 
 
 variable "public_subnet" {
-  type = string
+  type = list(string)
 }
 
 variable "private_subnet" {
-  type = string
+  type = list(string)
 }
-

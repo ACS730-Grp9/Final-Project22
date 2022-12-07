@@ -4,3 +4,7 @@ output "load_balancer_access" {
 output "target_group" {
   value = aws_lb_target_group.application_target_group.arn
 }
+
+output "security_groups" {
+  value = aws_security_group.scg_lb.id
+}

@@ -1,6 +1,6 @@
 # Default tags
 variable "default_tags" {
-  default = {}
+  default     = {}
   type        = map(any)
   description = "Default tags to be applied to all AWS resources"
 }
@@ -31,7 +31,7 @@ variable "vpc_cidr" {
 
 variable "zones" {
   description = "for multi zone deployment"
-  default = ["us-east-1b", "us-east-1c", "us-east-1d"]
+  default     = ["us-east-1b", "us-east-1c", "us-east-1d"]
 }
 
 # Variable to signal the current environment 

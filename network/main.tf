@@ -9,6 +9,12 @@ module "vpc-dev" {
   default_tags        = var.default_tags
 }
 
+# create AWS key
+module "aws_key" {
+  source   = "../modules/aws_key"
+  key_name = "${var.prefix}-${var.env}-key"
+  key_path = abspath("key.pub")
+}
 
 # Module to deploy application loadbalancer
 module "alb" {
@@ -34,6 +40,6 @@ module "asg" {
   min_size         = var.min_size
   max_size         = var.max_size
   instance_type    = var.instance_type
-  key_name         = var.key_name
+  key_name         = module.aws_key.key_name
   desired_capacity = var.desired_capacity
 }

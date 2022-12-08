@@ -49,10 +49,6 @@ variable "instance_type" {
   default = "t3.micro"
 }
 
-variable "key_name" {
-  type    = string
-  default = "acs_project"
-}
 
 variable "min_size" {
   type    = number

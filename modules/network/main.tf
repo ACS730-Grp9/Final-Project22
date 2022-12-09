@@ -29,7 +29,7 @@ resource "aws_subnet" "public_subnet" {
   availability_zone = var.zones[count.index]
   tags = merge(
     var.default_tags, {
-      Name = "${var.prefix}-${var.env}-public-subnet-${count.index}"
+      Name = "${var.prefix}-${var.env}-public-subnet-${count.index + 1}"
     }
   )
 }
@@ -42,7 +42,7 @@ resource "aws_subnet" "private_subnet" {
   availability_zone = var.zones[count.index]
   tags = merge(
     var.default_tags, {
-      Name = "${var.prefix}-${var.env}-private-subnet-${count.index}"
+      Name = "${var.prefix}-${var.env}-private-subnet-${count.index + 1}"
       Tier = "Private"
     }
   )

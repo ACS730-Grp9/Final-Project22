@@ -1,4 +1,3 @@
-
 resource "aws_lb_target_group" "application_target_group" {
   name        = "${var.common_name}-targetgroup"
   port        = 80

@@ -15,7 +15,6 @@ module "globalvars" {
   source = "../modules/globalvars"
 }
 
-# Module to deploy basic networking 
 module "vpc-dev" {
   source              = "../modules/network"
   env                 = var.env
@@ -27,7 +26,6 @@ module "vpc-dev" {
   common_name         = local.common_name
 }
 
-# create AWS key
 module "aws_key" {
   source       = "../modules/aws_key"
   key_name     = "${local.common_name}-key"
@@ -37,7 +35,6 @@ module "aws_key" {
   env          = var.env
 }
 
-# Module to deploy application loadbalancer
 module "alb" {
   source                    = "../modules/alb"
   env                       = var.env
@@ -50,8 +47,6 @@ module "alb" {
   common_name               = local.common_name  
 }
 
-
-# Module to deploy Auto scaling group
 module "asg" {
   source           = "../modules/asg"
   env              = var.env

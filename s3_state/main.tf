@@ -1,7 +1,3 @@
-# //////////////////////////////
-# S3 BUCKET
-# //////////////////////////////
-
 module "globalvars" {
   source = "../modules/globalvars"
 }

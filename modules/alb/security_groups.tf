@@ -15,6 +15,13 @@ resource "aws_security_group" "scg_lb" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    security_groups = [var.bastion_security_group_id]    
+  }
+
   tags = {
     Name = "${local.comon_name}-security-group"
     env  = var.env

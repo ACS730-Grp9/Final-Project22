@@ -3,6 +3,8 @@ Final Project: Two-Tier web application automation with Terraform
 
 [![Lint](https://github.com/ACS730-Grp9/Final-Project22/actions/workflows/tflint.yml/badge.svg)](https://github.com/ACS730-Grp9/Final-Project22/actions/workflows/tflint.yml)
 
+[![tfsec](https://github.com/ACS730-Grp9/Final-Project22/actions/workflows/tfsec.yml/badge.svg)](https://github.com/ACS730-Grp9/Final-Project22/actions/workflows/tfsec.yml)
+
 ## Pre-requisites
 
 1- create s3 bucket from AWS console to host the terrafrom state file and replace the bucket name in the below files 

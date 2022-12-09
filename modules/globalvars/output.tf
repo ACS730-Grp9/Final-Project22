@@ -6,6 +6,10 @@ output "default_tags" {
   }
 }
 
+output "members" {
+  value = ["Islamiyat Ayobami Osuolale", "Kamaal Bolton", "Naveendran Wijeyasekaran", "Oluwole Olamide Amusan"]
+}
+
 output "region" {
   value = "us-east-1"
 }

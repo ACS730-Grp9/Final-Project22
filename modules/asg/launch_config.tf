@@ -1,13 +1,18 @@
 resource "aws_launch_configuration" "server_launch_config" {
   name_prefix                 = "${local.comon_name}-webserver-launch-config"
-  image_id                    = var.ami
+  image_id                    = var.instance_ami
   instance_type               = var.instance_type
-  key_name                    = var.key_name
+  key_name                    = aws_key_pair.acs_proj_key.key_name
   security_groups             = var.security_groups
   associate_public_ip_address = false
-  user_data = templatefile("${path.module}/startup.sh.tpl", {
+  iam_instance_profile = "LabInstanceProfile"
+  user_data = templatefile("${path.module}/web-html.tpl", {
     env    = var.env,
-    prefix = var.prefix
+    prefix = var.prefix,
+    name1 = var.members[0],
+    name2 = var.members[1],
+    name3 = var.members[2],
+    name4 = var.members[3]
   })
 
   root_block_device {

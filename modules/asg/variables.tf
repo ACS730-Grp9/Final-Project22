@@ -18,6 +18,10 @@ variable "instance_ami" {
   type = string
 }
 
+variable "key_name" {
+  type = string
+}
+
 variable "public_subnet" {
   type = list(string)
 }

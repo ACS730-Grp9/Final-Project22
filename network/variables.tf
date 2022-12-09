@@ -14,32 +14,32 @@ variable "prefix" {
 }
 
 variable "public_subnet_cidrs" {
-  default     = ["10.100.1.0/24", "10.100.2.0/24", "10.100.3.0/24"]
+  default     = ["10.200.1.0/24", "10.200.2.0/24", "10.200.3.0/24"]
   type        = list(string)
   description = "Public Subnet CIDRs"
 }
 
 variable "private_subnet_cidrs" {
-  default     = ["10.100.4.0/24", "10.100.5.0/24", "10.100.6.0/24"]
+  default     = ["10.200.4.0/24", "10.200.5.0/24", "10.200.6.0/24"]
   type        = list(string)
   description = "Private Subnet CIDRs"
 }
 
 variable "vpc_cidr" {
-  default     = "10.100.0.0/16"
+  default     = "10.200.0.0/16"
   type        = string
   description = "VPC to host static web site"
 }
 
 variable "env" {
-  default     = "dev"
+  default     = "staging"
   type        = string
   description = "Deployment Environment"
 }
 
 variable "instance_type" {
   type    = string
-  default = "t3.micro"
+  default = "t3.small"
 }
 
 
@@ -55,5 +55,5 @@ variable "max_size" {
 
 variable "desired_capacity" {
   type    = number
-  default = "2"
+  default = "3"
 }

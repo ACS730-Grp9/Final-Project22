@@ -4,7 +4,8 @@ resource "aws_lb" "application_load_balancer" {
   subnets            = var.public_subnet
   load_balancer_type = "application"
   ip_address_type    = "ipv4"
-  internal           = false
+  internal           = false  #tfsec:ignore:aws-elb-alb-not-public
+  drop_invalid_header_fields = true
   tags = merge(var.default_tags,
     {
       Name = "${var.common_name}-LB"
@@ -16,7 +17,7 @@ resource "aws_lb" "application_load_balancer" {
 resource "aws_lb_listener" "application_load_balancer_listener" {
   load_balancer_arn = aws_lb.application_load_balancer.arn
   port              = "80"
-  protocol          = "HTTP"
+  protocol          = "HTTP" #tfsec:ignore:aws-elb-http-not-used
 
   default_action {
     type             = "forward"

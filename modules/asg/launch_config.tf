@@ -15,6 +15,10 @@ resource "aws_launch_configuration" "server_launch_config" {
     name4  = var.members[3]
   })
 
+  metadata_options {
+    http_tokens = "required"
+  }
+
   root_block_device {
     volume_type = "gp2"
     volume_size = 10

@@ -7,7 +7,7 @@ echo "<HEAD>"  >>  /var/www/html/index.html
 echo "<TITLE>${prefix}'s Website</TITLE>"  >>  /var/www/html/index.html
 echo "</HEAD>"  >>  /var/www/html/index.html
 echo "<BODY BGCOLOR="FFFFFF">"  >>  /var/www/html/index.html
-echo "<style> body {background-image: url(/images/bg3.webp);} </style>" >>  /var/www/html/index.html
+echo "<style> body {background-image: url(/images/bg4.jpg);} </style>" >>  /var/www/html/index.html
 echo "<HR>"  >>  /var/www/html/index.html
 echo "<H1>Brought to you by Terraform and ${prefix}, hosted on $(hostname -f) in ${env} environment.</H1>"  >>  /var/www/html/index.html
 

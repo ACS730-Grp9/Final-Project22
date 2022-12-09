@@ -29,19 +29,9 @@ variable "members" {
   type = list(string)
 }
 
-variable "ami" {
-  type    = string
-  default = "ami-08e637cea2f053dfa"
-}
-
 variable "instance_type" {
   type    = string
   default = "t2.micro"
-}
-
-variable "key_name" {
-  type    = string
-  default = "acs_project"
 }
 
 variable "min_size" {

@@ -2,7 +2,7 @@ resource "aws_launch_configuration" "server_launch_config" {
   name_prefix                 = "${local.comon_name}-webserver-launch-config"
   image_id                    = var.instance_ami
   instance_type               = var.instance_type
-  key_name                    = aws_key_pair.acs_proj_key.key_name
+  key_name                    = var.key_name
   security_groups             = var.security_groups
   associate_public_ip_address = false
   iam_instance_profile        = "LabInstanceProfile"

@@ -1,5 +1,5 @@
 resource "aws_security_group" "scg_lb" {
-  name = "${local.comon_name}-HTTP-In"
+  name   = "${local.comon_name}-HTTP-In"
   vpc_id = var.vpc_id
   egress {
     from_port   = 0

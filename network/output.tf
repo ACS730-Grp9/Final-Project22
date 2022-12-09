@@ -17,3 +17,11 @@ output "vpc_id" {
 output "load_balancer_dns" {
   value = module.alb.load_balancer_access
 }
+
+output "bastion_ip" {
+  value = module.bastion.bastion_public_ip
+}
+
+output "bastion_security_group_id" {
+  value = module.bastion.bastion_security_group_id
+}

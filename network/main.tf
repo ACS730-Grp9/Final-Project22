@@ -37,6 +37,7 @@ module "alb" {
   vpc_id         = module.vpc-dev.vpc_id
   public_subnet  = module.vpc-dev.public_subnet_ids
   private_subnet = module.vpc-dev.private_subnet_ids
+  bastion_security_group_id = module.bastion.bastion_security_group_id
 }
 
 
@@ -57,4 +58,15 @@ module "asg" {
   key_name         = module.aws_key.key_name
   desired_capacity = var.desired_capacity
   members          = module.globalvars.members
+}
+
+module "bastion" {
+  source = "../modules/bastion"
+  env              = var.env
+  prefix           = module.globalvars.prefix
+  instance_ami     = data.aws_ami.latest_amazon_linux.id
+  key_name         = module.aws_key.key_name  
+  instance_type    = var.instance_type
+  vpc_id = module.vpc-dev.vpc_id
+  bastion_subnet_id = module.vpc-dev.public_subnet_ids[0]
 }

@@ -14,10 +14,18 @@ variable "security_groups" {
   type = list(string)
 }
 
+variable "instance_ami" {
+  type = string
+}
+
 variable "public_subnet" {
   type = list(string)
 }
 variable "private_subnet" {
+  type = list(string)
+}
+
+variable "members" {
   type = list(string)
 }
 

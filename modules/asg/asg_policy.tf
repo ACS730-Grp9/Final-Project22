@@ -39,7 +39,7 @@ resource "aws_autoscaling_policy" "scale_down_policy" {
 }
 
 
-resource "aws_cloudwatch_metric_alarm" "Group_Project_ASG_ScaleDownAlarm" {
+resource "aws_cloudwatch_metric_alarm" "asg-scaledown-alarm" {
   alarm_name          = "${var.common_name}-asg-scaledown-alarm"
   comparison_operator = "LessThanOrEqualToThreshold"
   evaluation_periods  = "2"

@@ -1,5 +1,5 @@
 resource "aws_security_group" "scg_lb" {
-  name   = "${local.comon_name}-HTTP-In"
+  name   = "${var.common_name}-HTTP-In-SG"
   vpc_id = var.vpc_id
   egress {
     from_port   = 0
@@ -16,14 +16,15 @@ resource "aws_security_group" "scg_lb" {
   }
 
   ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    security_groups = [var.bastion_security_group_id]    
+    from_port       = 22
+    to_port         = 22
+    protocol        = "tcp"
+    security_groups = [var.bastion_security_group_id]
   }
 
-  tags = {
-    Name = "${local.comon_name}-security-group"
-    env  = var.env
-  }
+  tags = merge(var.default_tags,
+    {
+      Name = "${var.common_name}-HTTP-In-SG"
+      env  = var.env
+  })
 }

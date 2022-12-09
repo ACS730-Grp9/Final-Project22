@@ -1,6 +1,5 @@
-
 resource "aws_autoscaling_policy" "asg_scaleup_policy" {
-  name                   = "${local.comon_name}-asg-scalup-policy"
+  name                   = "${var.common_name}-asg-scalup-policy"
   scaling_adjustment     = 1
   adjustment_type        = "ChangeInCapacity"
   cooldown               = 300
@@ -9,7 +8,7 @@ resource "aws_autoscaling_policy" "asg_scaleup_policy" {
 
 
 resource "aws_cloudwatch_metric_alarm" "asg-scaleup-alarm" {
-  alarm_name          = "${local.comon_name}-ssg-scaleup-alarm"
+  alarm_name          = "${var.common_name}-ssg-scaleup-alarm"
   comparison_operator = "GreaterThanOrEqualToThreshold"
   evaluation_periods  = "2"
   metric_name         = "CPUUtilization"
@@ -22,11 +21,17 @@ resource "aws_cloudwatch_metric_alarm" "asg-scaleup-alarm" {
   }
   alarm_description = "This metric monitor EC2 instance CPU utilization"
   alarm_actions     = ["${aws_autoscaling_policy.asg_scaleup_policy.arn}"]
+
+  tags = merge(var.default_tags,
+    {
+      Name = "${var.common_name}-asg-cloudwatch-alarm-up"
+      env  = var.env
+  })  
 }
 
 
 resource "aws_autoscaling_policy" "scale_down_policy" {
-  name                   = "${local.comon_name}-asg-scaledown-policy"
+  name                   = "${var.common_name}-asg-scaledown-policy"
   scaling_adjustment     = -1
   adjustment_type        = "ChangeInCapacity"
   cooldown               = 300
@@ -35,7 +40,7 @@ resource "aws_autoscaling_policy" "scale_down_policy" {
 
 
 resource "aws_cloudwatch_metric_alarm" "Group_Project_ASG_ScaleDownAlarm" {
-  alarm_name          = "${local.comon_name}-asg-scaledown-alarm"
+  alarm_name          = "${var.common_name}-asg-scaledown-alarm"
   comparison_operator = "LessThanOrEqualToThreshold"
   evaluation_periods  = "2"
   metric_name         = "CPUUtilization"
@@ -48,4 +53,10 @@ resource "aws_cloudwatch_metric_alarm" "Group_Project_ASG_ScaleDownAlarm" {
   }
   alarm_description = "This metric monitor EC2 instance CPU utilization"
   alarm_actions     = ["${aws_autoscaling_policy.scale_down_policy.arn}"]
+
+  tags = merge(var.default_tags,
+    {
+      Name = "${var.common_name}-asg-cloudwatch-alarm-down"
+      env  = var.env
+  })  
 }

@@ -41,3 +41,6 @@ variable "env" {
   description = "Deployment Environment"
 }
 
+variable "common_name" {
+  type = string
+}

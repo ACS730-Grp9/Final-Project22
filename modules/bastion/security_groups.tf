@@ -1,5 +1,5 @@
 resource "aws_security_group" "bastion_ssh" {
-  name   = "${local.comon_name}-SSH-In"
+  name   = "${var.common_name}-SSH-In-SG"
   vpc_id = var.vpc_id
   egress {
     from_port   = 0
@@ -15,8 +15,9 @@ resource "aws_security_group" "bastion_ssh" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  tags = {
-    Name = "${local.comon_name}-SSH-In"
-    env  = var.env
-  }
+  tags = merge(var.default_tags,
+    {
+      Name = "${var.common_name}-SSH-In-SG"
+      env  = var.env
+  })  
 }

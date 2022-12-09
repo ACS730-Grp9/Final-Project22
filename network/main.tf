@@ -7,6 +7,10 @@ data "aws_ami" "latest_amazon_linux" {
   }
 }
 
+locals {
+  common_name = "${var.prefix}-${var.env}"
+}
+
 module "globalvars" {
   source = "../modules/globalvars"
 }
@@ -19,25 +23,31 @@ module "vpc-dev" {
   public_cidr_blocks  = var.public_subnet_cidrs
   private_cidr_blocks = var.private_subnet_cidrs
   prefix              = module.globalvars.prefix
-  default_tags        = var.default_tags
+  default_tags        = module.globalvars.default_tags
+  common_name         = local.common_name
 }
 
 # create AWS key
 module "aws_key" {
-  source   = "../modules/aws_key"
-  key_name = "${var.prefix}-${var.env}-key"
-  key_path = abspath("../keys/acs_project.pub")
+  source       = "../modules/aws_key"
+  key_name     = "${local.common_name}-key"
+  key_path     = abspath("../keys/acs_project.pub")
+  default_tags = module.globalvars.default_tags
+  common_name  = local.common_name  
+  env          = var.env
 }
 
 # Module to deploy application loadbalancer
 module "alb" {
-  source         = "../modules/alb"
-  env            = var.env
-  prefix         = module.globalvars.prefix
-  vpc_id         = module.vpc-dev.vpc_id
-  public_subnet  = module.vpc-dev.public_subnet_ids
-  private_subnet = module.vpc-dev.private_subnet_ids
+  source                    = "../modules/alb"
+  env                       = var.env
+  prefix                    = module.globalvars.prefix
+  vpc_id                    = module.vpc-dev.vpc_id
+  public_subnet             = module.vpc-dev.public_subnet_ids
+  private_subnet            = module.vpc-dev.private_subnet_ids
   bastion_security_group_id = module.bastion.bastion_security_group_id
+  default_tags              = module.globalvars.default_tags
+  common_name               = local.common_name  
 }
 
 
@@ -58,15 +68,19 @@ module "asg" {
   key_name         = module.aws_key.key_name
   desired_capacity = var.desired_capacity
   members          = module.globalvars.members
+  default_tags     = module.globalvars.default_tags
+  common_name      = local.common_name  
 }
 
 module "bastion" {
-  source = "../modules/bastion"
-  env              = var.env
-  prefix           = module.globalvars.prefix
-  instance_ami     = data.aws_ami.latest_amazon_linux.id
-  key_name         = module.aws_key.key_name  
-  instance_type    = var.instance_type
-  vpc_id = module.vpc-dev.vpc_id
+  source            = "../modules/bastion"
+  env               = var.env
+  prefix            = module.globalvars.prefix
+  instance_ami      = data.aws_ami.latest_amazon_linux.id
+  key_name          = module.aws_key.key_name
+  instance_type     = var.instance_type
+  vpc_id            = module.vpc-dev.vpc_id
   bastion_subnet_id = module.vpc-dev.public_subnet_ids[0]
+  default_tags      = module.globalvars.default_tags
+  common_name       = local.common_name  
 }

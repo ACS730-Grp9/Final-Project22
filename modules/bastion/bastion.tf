@@ -1,14 +1,3 @@
-locals {
-  comon_name = "${var.prefix}-${var.env}"
-}
-
-# data "aws_subnet_ids" "bastion_subnet" {
-#   filter {
-# 		name = "tag:Name"
-# 		values = ["${local.comon_name}-public-subnet-1"]
-# 	}
-# }
-
 resource "aws_instance" "acs_bastion" {
   ami                         = var.instance_ami
   instance_type               = var.instance_type
@@ -21,7 +10,9 @@ resource "aws_instance" "acs_bastion" {
     create_before_destroy = true
   }
 
-  tags = {
-      "Name" = "${local.comon_name}-bastion"
-  }
+  tags = merge(var.default_tags,
+    {
+      Name = "${var.common_name}-bastion"
+      env  = var.env
+  })  
 }

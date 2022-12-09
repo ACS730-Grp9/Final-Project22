@@ -11,7 +11,6 @@ Final Project: Two-Tier web application automation with Terraform
 2- create a key for ssh:
  - ssh-keygen -t rsa -f network/key
 
-3- create a s3 bucket for the images with name `acs730-group9-${env}-kb`, replace ${env} with the correspoing environemnt(dev,stagingm,prod) and then upload the images to the bucket in path `images/`
 
 ## to deploy the infrastrcture:
 

@@ -11,10 +11,10 @@ echo "<style> body {background-image: url(/images/bg3.webp);} </style>" >>  /var
 echo "<HR>"  >>  /var/www/html/index.html
 echo "<H1>Brought to you by Terraform and ${prefix}, hosted on $(hostname -f) in ${env} environment.</H1>"  >>  /var/www/html/index.html
 
-echo "<table>" >> /var/www/html/index.html
+echo "<table align="center">" >> /var/www/html/index.html
 echo "  <tr>" >>  /var/www/html/index.html
 echo "		<td><img src="/images/photo-1.webp" width="400" height="400" style="display:block"></td>" >>  /var/www/html/index.html
-echo "		<td><img src="/images/photo-2.webp" width="400" height="400" style="display:block"></td>" >>  /var/www/html/index.html
+echo "		<td><img src="/images/photo-2.webp" width="500" height="400" style="display:block"></td>" >>  /var/www/html/index.html
 echo "		<td><img src="/images/photo-3.webp" width="400" height="400" style="display:block"></td>"  >>  /var/www/html/index.html
 echo "  </tr>"  >>  /var/www/html/index.html
 echo "  <tr>"  >>  /var/www/html/index.html
@@ -29,7 +29,7 @@ echo "		<td><img src="/images/photo-5.webp" width="400" height="400" style="disp
 echo "  </tr>"  >>  /var/www/html/index.html
 echo "  <tr>"  >>  /var/www/html/index.html
 echo "		<td><img src="/images/photo-6.jpg" width="400" height="400" style="display:block"></td>"  >>  /var/www/html/index.html
-echo "		<td><img src="/images/photo-7.jpg" width="400" height="400" style="display:block"></td>"  >>  /var/www/html/index.html
+echo "		<td><img src="/images/photo-7.jpg" width="500" height="400" style="display:block"></td>"  >>  /var/www/html/index.html
 echo "		<td><img src="/images/photo-8.webp" width="400" height="400" style="display:block"></td>"  >>  /var/www/html/index.html
 echo "  </tr>"  >>  /var/www/html/index.html
 echo "</table>"  >>  /var/www/html/index.html

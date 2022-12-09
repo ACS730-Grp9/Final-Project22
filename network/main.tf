@@ -26,7 +26,7 @@ module "vpc-dev" {
 module "aws_key" {
   source   = "../modules/aws_key"
   key_name = "${var.prefix}-${var.env}-key"
-  key_path = abspath("key.pub")
+  key_path = abspath("../keys/acs_project.pub")
 }
 
 # Module to deploy application loadbalancer

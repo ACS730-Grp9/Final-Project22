@@ -18,6 +18,7 @@ resource "aws_launch_configuration" "server_launch_config" {
 
   metadata_options {
     http_tokens = "required"
+    http_endpoint = "enabled"
   }
 
   root_block_device {

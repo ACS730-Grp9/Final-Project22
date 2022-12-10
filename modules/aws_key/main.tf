@@ -4,7 +4,7 @@ resource "aws_key_pair" "aws_key" {
 
   tags = merge(var.default_tags,
     {
-      Name = "${var.common_name}-acs-project-key"
+      Name = "${var.common_name}-Acs-Project-Key"
       env  = var.env
   })  
 }

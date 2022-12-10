@@ -12,7 +12,7 @@ resource "aws_instance" "acs_bastion" {
 
   tags = merge(var.default_tags,
     {
-      Name = "${var.common_name}-bastion"
+      Name = "${var.common_name}-BastionHost"
       env  = var.env
   })  
 }

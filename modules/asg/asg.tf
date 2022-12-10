@@ -1,5 +1,5 @@
 resource "aws_autoscaling_group" "application_asg" {
-  name                 = "${var.common_name}-asg"
+  name                 = "${var.common_name}-Asg"
   min_size             = var.min_size
   desired_capacity     = var.desired_capacity
   max_size             = var.max_size
@@ -10,7 +10,7 @@ resource "aws_autoscaling_group" "application_asg" {
 
   tag {
     key                 = "Name"
-    value               = "${var.common_name}-vm"
+    value               = "${var.common_name}-Vm"
     propagate_at_launch = true
   }
 

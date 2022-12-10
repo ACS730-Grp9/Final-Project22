@@ -12,6 +12,7 @@ resource "aws_instance" "acs_bastion" {
   
   metadata_options {
     http_tokens = "required"
+    http_endpoint = "enabled"
   }
 
   lifecycle {

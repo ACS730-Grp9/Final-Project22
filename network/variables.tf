@@ -32,7 +32,7 @@ variable "vpc_cidr" {
 }
 
 variable "env" {
-  default     = "dev"
+  default     = "Dev"
   type        = string
   description = "Deployment Environment"
 }
@@ -45,7 +45,7 @@ variable "instance_type" {
 
 variable "min_size" {
   type    = number
-  default = "1"
+  default = "2"
 }
 
 variable "max_size" {

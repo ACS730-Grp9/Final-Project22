@@ -12,7 +12,7 @@ resource "aws_vpc" "main" {
   instance_tenancy = "default"
   tags = merge(var.default_tags,
     {
-      Name = "${var.common_name}-vpc"
+      Name = "${var.common_name}-Vpc"
       env  = var.env
   })  
 }
@@ -26,7 +26,7 @@ resource "aws_subnet" "public_subnet" {
 
   tags = merge(var.default_tags,
     {
-      Name = "${var.common_name}-public-subnet-${count.index + 1}"
+      Name = "${var.common_name}-Public-Subnet-${count.index + 1}"
       env  = var.env
   })  
 }
@@ -39,7 +39,7 @@ resource "aws_subnet" "private_subnet" {
 
   tags = merge(var.default_tags,
     {
-      Name = "${var.common_name}-private-subnet-${count.index + 1}"
+      Name = "${var.common_name}-Private-Subnet-${count.index + 1}"
       env  = var.env
   })  
 }
@@ -49,7 +49,7 @@ resource "aws_internet_gateway" "igw" {
 
   tags = merge(var.default_tags,
     {
-      Name = "${var.common_name}-igw"
+      Name = "${var.common_name}-Igw"
       env  = var.env
   }) 
 }
@@ -63,7 +63,7 @@ resource "aws_route_table" "public_route_table" {
 
   tags = merge(var.default_tags,
     {
-      Name = "${var.common_name}-route-public-route_table"
+      Name = "${var.common_name}-Route-Public-Route-Table"
       env  = var.env
   })   
 }
@@ -79,7 +79,7 @@ resource "aws_nat_gateway" "nat-gw" {
 
   tags = merge(var.default_tags,
     {
-      Name = "${var.common_name}-natgw"
+      Name = "${var.common_name}-NatGw"
       env  = var.env
   })  
 
@@ -91,7 +91,7 @@ resource "aws_eip" "nat-eip" {
 
   tags = merge(var.default_tags,
     {
-      Name = "${var.common_name}-natgw-eip"
+      Name = "${var.common_name}-NatGw-Eip"
       env  = var.env
   })  
 
@@ -102,7 +102,7 @@ resource "aws_route_table" "private_route_table" {
 
   tags = merge(var.default_tags,
     {
-      Name = "${var.common_name}-route-private-route_table"
+      Name = "${var.common_name}-Route-Private-Route-Table"
       env  = var.env
   })    
 }

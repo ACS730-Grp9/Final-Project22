@@ -1,5 +1,5 @@
 resource "aws_autoscaling_policy" "asg_scaleup_policy" {
-  name                   = "${var.common_name}-asg-scalup-policy"
+  name                   = "${var.common_name}-Asg-Scalup-Policy"
   scaling_adjustment     = 1
   adjustment_type        = "ChangeInCapacity"
   cooldown               = 300
@@ -8,7 +8,7 @@ resource "aws_autoscaling_policy" "asg_scaleup_policy" {
 
 
 resource "aws_cloudwatch_metric_alarm" "asg-scaleup-alarm" {
-  alarm_name          = "${var.common_name}-ssg-scaleup-alarm"
+  alarm_name          = "${var.common_name}-Asg-ScaleUp-Alarm"
   comparison_operator = "GreaterThanOrEqualToThreshold"
   evaluation_periods  = "2"
   metric_name         = "CPUUtilization"
@@ -24,14 +24,14 @@ resource "aws_cloudwatch_metric_alarm" "asg-scaleup-alarm" {
 
   tags = merge(var.default_tags,
     {
-      Name = "${var.common_name}-asg-cloudwatch-alarm-up"
+      Name = "${var.common_name}-Asg-ScaleUp-Alarm"
       env  = var.env
   })  
 }
 
 
 resource "aws_autoscaling_policy" "scale_down_policy" {
-  name                   = "${var.common_name}-asg-scaledown-policy"
+  name                   = "${var.common_name}-Asg-ScaleDown-Policy"
   scaling_adjustment     = -1
   adjustment_type        = "ChangeInCapacity"
   cooldown               = 300
@@ -40,7 +40,7 @@ resource "aws_autoscaling_policy" "scale_down_policy" {
 
 
 resource "aws_cloudwatch_metric_alarm" "asg-scaledown-alarm" {
-  alarm_name          = "${var.common_name}-asg-scaledown-alarm"
+  alarm_name          = "${var.common_name}-Asg-ScaleDown-Alarm"
   comparison_operator = "LessThanOrEqualToThreshold"
   evaluation_periods  = "2"
   metric_name         = "CPUUtilization"
@@ -56,7 +56,7 @@ resource "aws_cloudwatch_metric_alarm" "asg-scaledown-alarm" {
 
   tags = merge(var.default_tags,
     {
-      Name = "${var.common_name}-asg-cloudwatch-alarm-down"
+      Name = "${var.common_name}-Asg-ScaleDown-Alarm"
       env  = var.env
   })  
 }

@@ -1,5 +1,5 @@
 resource "aws_lb_target_group" "application_target_group" {
-  name        = "${var.common_name}-targetgroup"
+  name        = "${var.common_name}-TargetGroup"
   port        = 80
   target_type = "instance"
   protocol    = "HTTP"
@@ -17,7 +17,7 @@ resource "aws_lb_target_group" "application_target_group" {
   
   tags = merge(var.default_tags,
     {
-      Name = "${var.common_name}-target-group"
+      Name = "${var.common_name}-Target-Group"
       env  = var.env
   })
 

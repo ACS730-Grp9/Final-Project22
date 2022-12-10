@@ -1,7 +1,7 @@
 #!/bin/bash
 yum install httpd -y
 mkdir /var/www/html/images
-aws s3 cp s3://acs730-group9-${env}-kb/images/ /var/www/html/images --recursive
+aws s3 cp s3://${bucket}/images/ /var/www/html/images --recursive
 echo "<HTML>"  >  /var/www/html/index.html
 echo "<HEAD>"  >>  /var/www/html/index.html
 echo "<TITLE>${prefix}'s Website</TITLE>"  >>  /var/www/html/index.html

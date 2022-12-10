@@ -65,6 +65,7 @@ module "asg" {
   members          = module.globalvars.members
   default_tags     = module.globalvars.default_tags
   common_name      = local.common_name  
+  bucket_name      = var.your_bucket_name
 }
 
 module "bastion" {

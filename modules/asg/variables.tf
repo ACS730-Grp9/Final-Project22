@@ -72,3 +72,8 @@ variable "scale_down_threshold" {
   type    = number
   default = "5"
 }
+
+
+variable "bucket_name" {
+  type = string
+}

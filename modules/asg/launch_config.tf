@@ -8,6 +8,7 @@ resource "aws_launch_configuration" "server_launch_config" {
   iam_instance_profile        = "LabInstanceProfile"
   user_data = templatefile("${path.module}/web-html.tpl", {
     env    = lower(var.env),
+    bucket = lower(var.bucket_name),
     prefix = var.prefix,
     name1  = var.members[0],
     name2  = var.members[1],

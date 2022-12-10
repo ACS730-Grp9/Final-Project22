@@ -57,3 +57,8 @@ variable "desired_capacity" {
   type    = number
   default = "3"
 }
+
+variable "your_bucket_name" {
+  type = string
+}
+

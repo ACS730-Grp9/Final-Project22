@@ -1,5 +1,5 @@
 resource "aws_launch_configuration" "server_launch_config" {
-  name_prefix                 = "${var.common_name}-webserver-launch-config"
+  name_prefix                 = "${var.common_name}-WebServer-Launch-Config"
   image_id                    = var.instance_ami
   instance_type               = var.instance_type
   key_name                    = var.key_name

@@ -45,7 +45,7 @@ variable "instance_type" {
 
 variable "min_size" {
   type    = number
-  default = "2"
+  default = "3"
 }
 
 variable "max_size" {
@@ -56,4 +56,8 @@ variable "max_size" {
 variable "desired_capacity" {
   type    = number
   default = "3"
+}
+
+variable "your_bucket_name" {
+  type = string
 }

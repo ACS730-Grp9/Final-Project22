@@ -7,7 +7,7 @@ resource "aws_launch_configuration" "server_launch_config" {
   associate_public_ip_address = false
   iam_instance_profile        = "LabInstanceProfile"
   user_data = templatefile("${path.module}/web-html.tpl", {
-    env    = var.env,
+    env    = lower(var.env),
     prefix = var.prefix,
     name1  = var.members[0],
     name2  = var.members[1],

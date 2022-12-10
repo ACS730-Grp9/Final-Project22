@@ -29,6 +29,3 @@
 .vscode
 
 /private*
-
-# Untracking & ignoring to allow each member to have unique s3 bucket names
-config.tf
